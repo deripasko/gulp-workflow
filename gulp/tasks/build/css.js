@@ -7,11 +7,12 @@
 // ----------------------------------
 // plugins:
 //     gulp-sourcemaps        : $.sourcemaps
-//     gulp-minify-css        : $.minifyCss
+//     gulp-clean-css         : $.cleanCss
 //     gulp-rename            : $.rename
 //     gulp-plumber           : $.plumber
 //     gulp-concat            : $.concat
-//     gulp-uncss             : $.uncss
+//     gulp-postcss           : $.postcss
+//     postcss-uncss          : $.postcssUncss
 //     gulp-filter            : $.filter
 //     gulp-cssbeautify       : $.cssbeautify
 //     gulp-strip-css-comments: $.stripCssComments
@@ -44,8 +45,12 @@ module.exports = function(gulp, $, path, config) {
             // replace url references in css
             .pipe($.replace('url("../../fonts/', 'url("../fonts/'))
             // remove unused css selectors
-            .pipe($.uncss(
-                config.css.uncssOptions // options
+            .pipe($.postcss(
+                [
+                    $.postcssUncss(
+                        config.css.postcssUncssOptions // options
+                    ),
+                ]
             ))
             // strip unimportant css comments
             .pipe($.stripCssComments(
@@ -65,11 +70,11 @@ module.exports = function(gulp, $, path, config) {
             .pipe(gulp.dest(path.to.sass.dist.prod))
             // filter css files
             .pipe(filter)
-            // initialize sourcemaps before minify
+            // initialize sourcemaps before minify and clean css
             .pipe($.sourcemaps.init())
-            // minify
-            .pipe($.minifyCss(
-                config.css.minifyCssOptions // options
+            // minify and clean
+            .pipe($.cleanCss(
+                config.css.cleanCssOptions // options
             ))
             // rename files
             .pipe($.rename(

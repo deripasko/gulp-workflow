@@ -1,4 +1,4 @@
-##Gulp workflow [![Build Status](https://travis-ci.org/mohamdio/gulp-workflow.svg?branch=master)](https://travis-ci.org/mohamdio/gulp-workflow)
+## Gulp workflow [![Build Status](https://travis-ci.org/mohamdio/gulp-workflow.svg?branch=master)](https://travis-ci.org/mohamdio/gulp-workflow)
 An organized front-end workflow for your next project using gulp.
 * [Features](https://github.com/mohamdio/gulp-workflow#features)
 * [Gulp Tasks Structure](https://github.com/mohamdio/gulp-workflow#gulp-tasks-structure)
@@ -7,7 +7,7 @@ An organized front-end workflow for your next project using gulp.
 * [Configuration & Paths](https://github.com/mohamdio/gulp-workflow#configuration--paths)
 * [License](https://github.com/mohamdio/gulp-workflow#license)
 
-##Features
+## Features
 - Organized & splitting tasks files
 - Using gulp-load-plugins
 - Define tasks options & paths from one file
@@ -26,7 +26,7 @@ An organized front-end workflow for your next project using gulp.
 - Concat css/js files
 - & more, take a look at the gulp plugins used in [package.json](https://github.com/mohamdio/gulp-workflow/blob/master/package.json)
 
-##Gulp Tasks Structure
+## Gulp Tasks Structure
 This is gulp folder structure:
 - `config.js` file : to define tasks options
 - `paths.js` file : to define all paths for tasks
@@ -58,7 +58,7 @@ gulp
         └── scripts.js
 ```
 
-##Getting Started
+## Getting Started
 - Install [Node.js](https://nodejs.org/)
 - Install [Gulp](http://gulpjs.com/) & [bower](http://bower.io/) globally 
 ```
@@ -86,7 +86,7 @@ bower install
   * `gulp build` to build your project for production
   * `gulp help` to get a listing of available tasks
 
-####Available Tasks
+#### Available Tasks
 Task Name | Subtasks | Description
 --- | --- | ---
 `clean` | `clean:cache` - `clean:prod` | clean dest folders (dev & prod) & caches :: [base/clean.js](https://github.com/mohamdio/gulp-workflow/blob/master/gulp/tasks/base/clean.js)
@@ -105,7 +105,7 @@ Task Name | Subtasks | Description
 --- | `build:images` | copy images to prod folder :: [build/images.js](https://github.com/mohamdio/gulp-workflow/blob/master/gulp/tasks/build/images.js)
 --- | `build:html` | copy & prettify html files and inject minified css/js files :: [build/html.js](https://github.com/mohamdio/gulp-workflow/blob/master/gulp/tasks/build/html.js)
 
-##Folders Structure
+## Folders Structure
 - `source` folder : contain all source files
 - `build` folder : contain dest folders `dev` for development & `prod` for production
 - `bower_components` folder : contain all bower dependencies
@@ -189,7 +189,7 @@ gulp-workflow
 └── package.json
 ```
 
-##Configuration & Paths
+## Configuration & Paths
 - From [`gulp/config.js`](https://github.com/mohamdio/gulp-workflow/blob/master/gulp/config.js) you can define tasks & plugins options without change anything in task file, example :
 ```javascript
 // bower task mainBowerFiles options
@@ -225,5 +225,5 @@ var src    = './source/',
         },
 ```
 
-##License
+## License
 The code is available under the [MIT License](https://github.com/mohamdio/gulp-workflow/LICENSE).

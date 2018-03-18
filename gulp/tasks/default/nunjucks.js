@@ -25,9 +25,6 @@ module.exports = function(gulp, $, path, config) {
     // render nunjucks files task
     gulp.task(config.task.nunjucks + ':render', 'render nunjucks files', function() {
 
-        $.nunjucksRender.nunjucks.configure([path.to.nunjucks.config], {
-            watch: false
-        });
         return gulp.src(path.to.nunjucks.src)
             // prevent breaking errors
             .pipe($.plumber({
@@ -38,7 +35,9 @@ module.exports = function(gulp, $, path, config) {
             // only pass through newer source files
             .pipe($.newer(path.to.dist.dev + '*.html'))
             // start render
-            .pipe($.nunjucksRender())
+            .pipe($.nunjucksRender(
+                config.nunjucks.options // options
+            ))
             // beautify HTML
             .pipe($.prettify(
                 config.html.prettifyOptions // options

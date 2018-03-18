@@ -34,7 +34,7 @@ module.exports = function(gulp, $, path, config) {
     });
 
     // delete dest folder [build] and clear all caches
-    gulp.task(config.task.clean, 'delete dest folder [build] and clear all caches \n', [config.task.clean + ':cache', config.task.bower + ':clean'], function() {
+    gulp.task(config.task.clean, 'delete dest folder [build] and clear all caches \n', [config.task.clean + ':cache', config.task.vendor + ':clean'], function() {
 
         return $.del([
             path.to.dist.main,

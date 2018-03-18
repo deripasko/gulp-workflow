@@ -6,8 +6,8 @@
 //    'gulp'
 //    'gulp clean'
 //          clean:cache - clean:prod
-//    'gulp bower'
-//          bower:clean - bower:scss - bower:js - bower:css - bower:fonts
+//    'gulp vendor'
+//          vendor:clean - vendor:scss - vendor:js - vendor:css - vendor:fonts
 //    'gulp fonts'
 //    'gulp sass'
 //          sass:compile - sass:doc - sass:cssRebaseUrl
@@ -28,10 +28,10 @@
 //     gulp-load-plugins, gulp-load-subtasks, gulp-help
 //     gulp-nunjucks-render, gulp-cssbeautify
 //     gulp-sass, gulp-sourcemaps, browser-sync
-//     gulp-prettify, gulp-newer, main-bower-files
+//     gulp-prettify, gulp-newer, npmfiles
 //     gulp-flatten, del, gulp-inject, gulp-cached
-//     gulp-autoprefixer, sassdoc, gulp-minify-css
-//     gulp-rename, lazypipe, gulp-concat, gulp-uncss
+//     gulp-autoprefixer, sassdoc, gulp-clean-css
+//     gulp-rename, lazypipe, gulp-concat, gulp-postcss postcss-uncss
 //     gulp-strip-css-comments, gulp-filter, gulp-changed
 //     browserify, vinyl-source-stream, vinyl-buffer 
 //     gulp-uglify, watchify, lodash.assign, gulp-imagemin
@@ -58,7 +58,7 @@ $.loadSubtasks('./gulp/tasks/**/*.js', $, path, config);
 gulp.task('default', 'common default tasks for dev mode', function(cb) {
     sequence(
     	config.task.clean,
-    	config.task.bower,
+    	config.task.vendor,
     	config.task.fonts,
         config.task.sass,
         config.task.scripts,

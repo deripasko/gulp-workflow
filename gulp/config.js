@@ -20,7 +20,7 @@ module.exports = {
 		sass       : 'sass',
 		scripts    : 'js',
 		images     : 'images',
-		bower      : 'bower',
+		vendor     : 'vendor',
 		nunjucks   : 'nunjucks',
 		clean      : 'clean',
 		build      : 'build'
@@ -47,23 +47,63 @@ module.exports = {
         }
     },
 
-    // bower task mainBowerFiles options
-    mainBowerFiles: {
+    // vendor task mainYarnFiles options
+    mainYarnFiles: {
         // main options
         options: {
-            base: 'bower_components'
+            js: {
+                filter: '**/*.js',
+                paths: {
+                    modulesFolder: 'node_modules',
+                    jsonFile: 'package.json'
+                }
+            },
+            scss: {
+                filter: '**/*.{scss,sass}',
+                paths: {
+                    modulesFolder: 'node_modules',
+                    jsonFile: 'package.json'
+                }
+            },
+            css: {
+                filter: '**/*.css',
+                paths: {
+                    modulesFolder: 'node_modules',
+                    jsonFile: 'package.json'
+                }
+            },
+            fonts: {
+                filter: '**/*.{svg,ttf,otf,eot,woff,woff2}',
+                paths: {
+                    modulesFolder: 'node_modules',
+                    jsonFile: 'package.json'
+                }
+            },
+            // paths: {
+            //     modulesFolder: 'node_modules',
+            //     jsonFile: 'package.json'
+            // }
         },
-        // bower:css rename options
+        // vendor:css rename options
         rename: {
             suffix: "-css",
             extname: '.scss'
         },
         // watch src
-        watch: ['./bower_components/**', './bower.json']
+        watch: ['./node_modules/**', './package.json']
     },
 
     // nunjucks task options
     nunjucks: {
+        // nunjucks options
+        // @see https://github.com/carlosl/gulp-nunjucks-render#options
+        options: {
+            path: [path.to.nunjucks.config],
+            // ext: '.html', // Extension for compiled templates
+            envOptions: {
+            watch: false
+            },
+        },
         // inject task options
         injectCss: {
             vendorOptions: {
@@ -137,8 +177,8 @@ module.exports = {
 
     // css task options
     css: {
-        // uncss options
-        uncssOptions: {
+        // postcss-uncss options
+        postcssUncssOptions: {
             html: [path.to.dist.dev + '*.html'],
             // more options
             // https://github.com/giakki/uncss#within-nodejs
@@ -151,9 +191,10 @@ module.exports = {
         cssbeautifyOptions: {
             indent: '  '
         },
-        // minify css options
-        minifyCssOptions: {
-            keepSpecialComments: 1
+        // minify and clean css options
+        // @see https://github.com/jakubpawlowicz/clean-css#level-1-optimizations
+        cleanCssOptions: {
+            specialComments: 'all'
         },
         // rename options
         renameOptions: {
