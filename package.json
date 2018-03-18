@@ -58,6 +58,7 @@
     "postcss-uncss": "0.16.1",
     "run-sequence": "2.2.1",
     "sassdoc": "2.5.0",
+    "uncss": "0.16.2",
     "vinyl-buffer": "1.0.1",
     "vinyl-source-stream": "2.0.0",
     "watchify": "3.11.0"
