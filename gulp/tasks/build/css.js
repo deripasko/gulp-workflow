@@ -63,7 +63,7 @@ module.exports = function(gulp, $, path, config) {
             // initialize sourcemaps
             .pipe($.sourcemaps.init())
             // concat all css files
-            .pipe($.concat('style.css'))
+            .pipe($.concat('app.css'))
             // writing sourcemaps
             .pipe($.sourcemaps.write('./maps'))
             // dest unminified file

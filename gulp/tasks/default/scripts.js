@@ -44,7 +44,7 @@ module.exports = function(gulp, $, path, config) {
     function bundle() {
         return b.bundle()
             .on('error', config.error)
-            .pipe($.vinylSourceStream('scripts.js'))
+            .pipe($.vinylSourceStream('app.js'))
             .pipe($.vinylBuffer())
             .pipe($.sourcemaps.init({
                 loadMaps: true
