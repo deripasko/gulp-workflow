@@ -13,7 +13,6 @@
 //     gulp-concat            : $.concat
 //     gulp-postcss           : $.postcss
 //     postcss-uncss          : $.postcssUncss
-//     gulp-filter            : $.filter
 //     gulp-cssbeautify       : $.cssbeautify
 //     gulp-strip-css-comments: $.stripCssComments
 //     gulp-replace           : $.replace
@@ -23,11 +22,6 @@
 // ----------------------------------
 
 module.exports = function(gulp, $, path, config) {
-
-    // avoid writing sourcemaps of sourcemaps
-    var filter = $.filter(['*.css', '!*.map'], {
-        restore: true
-    });
 
     // start css task
     gulp.task(config.task.build + ':css', 'build css files (beautify/concat/minify..)', function() {
@@ -56,22 +50,14 @@ module.exports = function(gulp, $, path, config) {
             .pipe($.stripCssComments(
                 config.css.stripCommentsOptions // options
             ))
+            // concat all css files
+            .pipe($.concat('app.css'))
             // beautify final css code
             .pipe($.cssbeautify(
                 config.css.cssbeautifyOptions // options
             ))
-            // initialize sourcemaps
-            .pipe($.sourcemaps.init())
-            // concat all css files
-            .pipe($.concat('app.css'))
-            // writing sourcemaps
-            .pipe($.sourcemaps.write('./maps'))
-            // dest unminified file
+            // dest unminified final css file
             .pipe(gulp.dest(path.to.sass.dist.prod))
-            // filter css files
-            .pipe(filter)
-            // initialize sourcemaps before minify and clean css
-            .pipe($.sourcemaps.init())
             // minify and clean
             .pipe($.cleanCss(
                 config.css.cleanCssOptions // options
@@ -80,10 +66,6 @@ module.exports = function(gulp, $, path, config) {
             .pipe($.rename(
                 config.css.renameOptions // options
             ))
-            // writing sourcemaps for minified file
-            .pipe($.sourcemaps.write('./maps'))
-            // restoring filtered files
-            .pipe(filter.restore)
             .pipe(gulp.dest(path.to.sass.dist.prod));
 
     });

@@ -109,17 +109,23 @@ module.exports = {
             vendorOptions: {
                 relative: true,
                 name: 'vendor',
+                starttag: '<!-- vendor:css -->',
+                endtag: '<!-- endvendor -->',
                 // removeTags: true
                 // more options : https://github.com/klei/gulp-inject#api
             },
             mainOptions: {
                 relative: true,
+                starttag: '<!-- inject:css -->',
+                endtag: '<!-- endinject -->',
                 // removeTags: true
             }
         },
         injectJs: {
             options: {
                 relative: true,
+                starttag: '<!-- inject:js -->',
+                endtag: '<!-- endinject -->',
                 // removeTags: true
             }
         }
