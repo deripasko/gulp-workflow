@@ -50,7 +50,7 @@ module.exports = function(gulp, $, path, config) {
             }))
             // inject main css file
             .pipe($.inject(gulp.src(
-                path.to.sass.dist.prod + '/*.min.css', {
+                path.to.sass.dist.prod + '/*.css', {
                     read: false
                 }), 
                 config.html.injectCss.options // options

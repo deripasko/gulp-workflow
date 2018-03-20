@@ -56,16 +56,16 @@ module.exports = function(gulp, $, path, config) {
             .pipe($.cssbeautify(
                 config.css.cssbeautifyOptions // options
             ))
-            // dest unminified final css file
-            .pipe(gulp.dest(path.to.sass.dist.prod))
+            // uncomment to dest unminified final css file
+            // .pipe(gulp.dest(path.to.sass.dist.prod))
             // minify and clean
             .pipe($.cleanCss(
                 config.css.cleanCssOptions // options
             ))
-            // rename files
-            .pipe($.rename(
-                config.css.renameOptions // options
-            ))
+            // uncomment to rename final css file
+            // .pipe($.rename(
+            //     config.css.renameOptions // options
+            // ))
             .pipe(gulp.dest(path.to.sass.dist.prod));
 
     });
